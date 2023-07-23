@@ -9,7 +9,13 @@ class TestFashionMNIST : public ::testing::Test
 protected:
 	void SetUp() {}
 	void TearDown() {}
-	std::string tests_path = "tests";
+
+	std::string tests_path = 
+#if defined(WIN32)
+  "../tests";
+#else
+  "tests";
+#endif
 };
 
 TEST_F(TestFashionMNIST, test_tensorflow)
